@@ -1,19 +1,87 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+<html lang="en-US" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
-</html>
+
+		<!-- ===============================================-->
+		<!--    Document Title-->
+		<!-- ===============================================-->
+			<title>
+				{% block title %}
+			little squirrel | Landing, Responsive &amp; Business Templatee
+		{% endblock %}
+		</title>
+
+
+		<!-- ===============================================-->
+		<!--    Favicons-->
+		<!-- ===============================================-->
+		<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('build/images/favicons/apple-touch-icon.png') }}"> <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('build/images/favicons/favicon-32x32.png') }}">
+		<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('build/images/favicons/favicon-16x16.png') }}">
+		<link rel="shortcut icon" type="image/x-icon" href="{{ asset('build/images/favicons/favicon.ico') }}">
+		<link rel="manifest" href="{{ asset('build/images/favicons/manifest.json') }}">
+		<meta name="msapplication-TileImage" content="{{ asset('build/images/favicons/mstile-150x150.png') }}">
+		<meta name="theme-color" content="#ffffff">
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+
+
+	</head>
+
+
+	<body>
+		<main class="main" id="top">
+			{% use "header.html.twig" %}
+			{% block header %}
+				{{ parent() }}
+			{% endblock %}
+			{% use "nav.html.twig" %}
+			{% block nav %}
+				{{ parent() }}
+			{% endblock %}
+			{% use "carossel.html.twig" %}
+			{% block carossel %}
+				{{ parent() }}
+			{% endblock %}
+			{% use "upcoming.html.twig" %}
+			{% block upcoming %}
+				{{ parent() }}
+			{% endblock %}
+			{% block body %}{% endblock %}
+			{% use "successful.html.twig" %}
+			{% block successful %}
+				{{ parent() }}
+			{% endblock %}
+			{% use "stat.html.twig" %}
+			{% block stat %}
+				{{ parent() }}
+			{% endblock %}
+			{% use "subscrible.html.twig" %}
+			{% block subscrible %}
+				{{ parent() }}
+			{% endblock %}
+			{% use "footer.html.twig" %}
+			{% block footer %}
+				{{ parent() }}
+			{% endblock %}
+			{% use "right.html.twig" %}
+			{% block right %}
+				{{ parent() }}
+			{% endblock %}
+
+
+		</main>
+		<script src="vendors/@popperjs/popper.min.js"></script>
+
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+
+
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+		<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Rubik:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"></body>
+</html></body></html>
