@@ -1,0 +1,13 @@
+<div class="col-md-4 mb-4">
+	<div class="card h-100">
+		<img class="card-img-top w-100" src="{{ livre.image }}" alt="courses"/>
+		<div class="card-body">
+			<h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">
+				{{livre.titre}}
+			</h5>
+			<a class="text-muted fs--1 stretched-link text-decoration-none" href="{{ path('livre_show', {'id': livre.id}) }}">
+				{{livre.description}}
+			</a>
+		</div>
+	</div>
+</div>
