@@ -24,7 +24,8 @@ class LivreCrudController extends AbstractCrudController
             ImageField::new('image')
             ->setBasePath('uploads/livre/')
             ->setUploadDir('public/uploads/livre')
-            ->setUploadedFileNamePattern('[randomhash].[extension]'),
+            ->setUploadedFileNamePattern('[randomhash].[extension]')
+            ->setRequired(false),
             AssociationField::new('categorie'),
             AssociationField::new('level'),
             AssociationField::new('language'),

@@ -17,6 +17,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    public function __toString()
+    {
+        return $this->email;
+    }
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

@@ -10,6 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Reservation
 {
+    public function __construct()
+    {
+        $this->reserverPour = new \DateTime('now');
+        $this->reserverA = new \DateTime('now');
+    }
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
