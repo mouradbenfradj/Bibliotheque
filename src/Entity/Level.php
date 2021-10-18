@@ -12,6 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Level
 {
+    
+    public function __toString()
+    {
+        return $this->level;
+    }
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

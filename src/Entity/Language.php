@@ -12,6 +12,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Language
 {
+    public function __toString()
+    {
+        return $this->lng;
+    }
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
