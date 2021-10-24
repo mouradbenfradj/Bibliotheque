@@ -11,16 +11,19 @@
 						<a class="nav-link active" aria-current="page" href="{{ path('default') }}">Home</a>
 					</li>
 					{# 
-																																								<li class="nav-item px-2">
-																																									<a class="nav-link" aria-current="page" href="pricing.html">Pricing</a>
-																																								</li> #}
+																																																												<li class="nav-item px-2">
+																																																													<a class="nav-link" aria-current="page" href="pricing.html">Pricing</a>
+																																																												</li> #}
 					<li class="nav-item px-2">
 						<a class="nav-link" aria-current="page" href="{{ path('livre_index') }}">Web Development</a>
 					</li>
-					{# 
-																																			<li class="nav-item px-2">
-																																				<a class="nav-link" aria-current="page" href="user-research.html">User Research</a>
-																																			</li> #}
+					{% if app.user %}
+
+						<li class="nav-item px-2">
+							<a class="nav-link" aria-current="page" href="{{ path('reservation_index') }}">Mes reservation</a>
+						</li>
+					{% endif %}
+
 				</ul>
 				{% if app.user %}
 					<a class="btn btn-primary order-1 order-lg-0" href="{{ path('app_logout') }}">logout</a>

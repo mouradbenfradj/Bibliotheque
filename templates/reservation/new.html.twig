@@ -1,11 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Reservation{% endblock %}
+{% block title %}New Reservation
+{% endblock %}
+
+{% block carossel %}{% endblock %}
+{% block upcoming %}{% endblock %}
+{% block successful %}{% endblock %}
+{% block stat %}{% endblock %}
+{% block subscrible %}{% endblock %}
+
 
 {% block body %}
-    <h1>Create new Reservation</h1>
+	<!-- ============================================-->
+	<!-- <section> begin ============================-->
+		<section>
+			<div class="container"> <div class="row">
+				<h1 class="text-center mb-5">
+					Reservation
+				</h1>
 
-    {{ include('reservation/_form.html.twig') }}
+				{{ include('reservation/_form.html.twig') }}
 
-    <a href="{{ path('reservation_index') }}">back to list</a>
+				{# 				<a href="{{ path('reservation_index') }}">back to list</a>
+												 #}
+			</div>
+		</div>
+		<!-- end of .container-->
+
+	</section>
+	<!-- <section> close ============================-->
+	<!-- ============================================-->
+
+
 {% endblock %}

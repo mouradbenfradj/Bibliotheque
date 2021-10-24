@@ -1,39 +1,301 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Reservation index{% endblock %}
+{% block title %}Reservation index
+{% endblock %}
+{% block carossel %}{% endblock %}
+{% block upcoming %}{% endblock %}
+{% block successful %}{% endblock %}
+{% block stat %}{% endblock %}
+{% block subscrible %}{% endblock %}
+
 
 {% block body %}
-    <h1>Reservation index</h1>
+	<!-- ============================================-->
+	<!-- <section> begin ============================-->
+		<section class="bg-600"> <div class="container">
+			<div class="row">
+				<div class="col">
+					<h6 class="font-sans-serif text-primary fw-bold"></h6>
+					<h1 class="mb-6">Reservation</h1>
+				</div>
+				{# <div class="col">
+																																																																																																																																	<div class="d-flex justify-content-end">
+																																																																																																																																		<label class="form-check-label me-2" for="customSwitch1">Monthly</label>
+																																																																																																																																		<div class="form-check form-switch">
+																																																																																																																																			<input class="form-check-input" id="customSwitch1" type="checkbox" checked="checked"/>
+																																																																																																																																			<label class="form-check-label align-top" for="customSwitch1">Yearly</label>
+																																																																																																																																		</div>
+																																																																																																																																	</div>
+																																																																																																																																</div> #}
+			</div>
+			<div class="row">
+				{% for reservation in reservations %}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>ReserverPour</th>
-                <th>ReserverA</th>
-                <th>RenduLe</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for reservation in reservations %}
-            <tr>
-                <td>{{ reservation.id }}</td>
-                <td>{{ reservation.reserverPour ? reservation.reserverPour|date('Y-m-d') : '' }}</td>
-                <td>{{ reservation.reserverA ? reservation.reserverA|date('Y-m-d') : '' }}</td>
-                <td>{{ reservation.renduLe ? reservation.renduLe|date('Y-m-d') : '' }}</td>
-                <td>
-                    <a href="{{ path('reservation_show', {'id': reservation.id}) }}">show</a>
-                    <a href="{{ path('reservation_edit', {'id': reservation.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+					{% if not reservation.renduLe %}
+						{% if not reservation.accepter and not reservation.refuser and not reservation.livrer %}
 
-    <a href="{{ path('reservation_new') }}">Create new</a>
+							<div class="col-md-4">
+								<div class="card mb-5 mb-md-0 h-100">
+									<div class="text-center mb-5">
+										<span class="badge bg-black fw-normal text-uppercase bg-secondary">En attente</span>
+									</div>
+									<div class="card-body px-4 py-6 py-md-5 py-lg-6">
+										<div class="d-flex justify-content-start text-secondary">
+											<span class="h4 mb-0 mt-2 me-2">{{ reservation.livre }}</span>
+											<span class="display-3 fw-medium"></span>
+											<span class="display-4 fw-medium"></span>
+										</div>
+										<p class="text-muted mb-2 my-md-3"></p>
+										<hr class="border border-1"/>
+										<ul class="list-unstyled">
+											<li class="mb-3">
+												<i class="fas fa-check text-info me-2"></i>Reserver de
+												{{ reservation.reserverPour ? reservation.reserverPour|date('Y-m-d') : '' }}</li>
+											<li class="mb-3">
+												<i class="fas fa-check text-info me-2"></i>Reserver a
+												{{ reservation.reserverA ? reservation.reserverA|date('Y-m-d') : '' }}</li>
+											<li class="mb-3">
+												<i class="fas fa-check text-info me-2"></i>Rendu le
+												{{ reservation.renduLe ? reservation.renduLe|date('Y-m-d') : '' }}</li>
+											<li class="mb-3">
+												<i class="fas fa-check text-muted me-2"></i>
+											</li>
+											<li class="mb-3">
+												<i class="fas fa-check text-muted me-2"></i>
+											</li>
+										</ul>
+										<div
+											class="d-grid">{# 									<a class="btn btn-lg btn-primary" href="#!">Purchase now</a>
+																																																																																																																																																																																																																																																																																																																										 #}
+										</div>
+									</div>
+								</div>
+							</div>
+						{% elseif  reservation.accepter and not reservation.refuser and not reservation.livrer %}
+							<div class="col-md-4">
+								<div class="card mb-5 mb-md-0 h-100">
+									<div class="text-center mb-5">
+										<span class="badge bg-black fw-normal text-uppercase bg-info">accepter</span>
+									</div>
+									<div class="card-body px-4 py-6 py-md-5 py-lg-6">
+										<div class="d-flex justify-content-start text-secondary">
+											<span class="h4 mb-0 mt-2 me-2">{{ reservation.livre }}</span>
+											<span class="display-3 fw-medium"></span>
+											<span class="display-4 fw-medium"></span>
+										</div>
+										<p class="text-muted mb-2 my-md-3"></p>
+										<hr class="border border-1"/>
+										<ul class="list-unstyled">
+											<li class="mb-3">
+												<i class="fas fa-check text-info me-2"></i>Reserver de
+												{{ reservation.reserverPour ? reservation.reserverPour|date('Y-m-d') : '' }}</li>
+											<li class="mb-3">
+												<i class="fas fa-check text-info me-2"></i>Reserver a
+												{{ reservation.reserverA ? reservation.reserverA|date('Y-m-d') : '' }}</li>
+											<li class="mb-3">
+												<i class="fas fa-check text-info me-2"></i>Rendu le
+												{{ reservation.renduLe ? reservation.renduLe|date('Y-m-d') : '' }}</li>
+											<li class="mb-3">
+												<i class="fas fa-check text-muted me-2"></i>
+											</li>
+											<li class="mb-3">
+												<i class="fas fa-check text-muted me-2"></i>
+											</li>
+										</ul>
+										<div
+											class="d-grid">{# 										<a class="btn btn-lg btn-secondary" href="#!">Purchase now</a>
+																																																																																																																																																						 #}
+										</div>
+									</div>
+								</div>
+							</div>
+						{% elseif  reservation.accepter and not reservation.refuser and  reservation.livrer %}
+							<div class="col-md-4">
+								<div class="card mb-5 mb-md-0 h-100">
+									<div class="text-center mb-5">
+										<span class="badge bg-black fw-normal text-uppercase bg-info">livrer</span>
+									</div>
+									<div class="card-body px-4 py-6 py-md-5 py-lg-6">
+										<div class="d-flex justify-content-start text-secondary">
+											<span class="h4 mb-0 mt-2 me-2">{{ reservation.livre }}</span>
+											<span class="display-3 fw-medium"></span>
+											<span class="display-4 fw-medium"></span>
+										</div>
+										<p class="text-muted mb-2 my-md-3"></p>
+										<hr class="border border-1"/>
+										<ul class="list-unstyled">
+											<li class="mb-3">
+												<i class="fas fa-check text-info me-2"></i>Reserver de
+												{{ reservation.reserverPour ? reservation.reserverPour|date('Y-m-d') : '' }}</li>
+											<li class="mb-3">
+												<i class="fas fa-check text-info me-2"></i>Reserver a
+												{{ reservation.reserverA ? reservation.reserverA|date('Y-m-d') : '' }}</li>
+											<li class="mb-3">
+												<i class="fas fa-check text-info me-2"></i>Rendu le
+												{{ reservation.renduLe ? reservation.renduLe|date('Y-m-d') : '' }}</li>
+											<li class="mb-3">
+												<i class="fas fa-check text-muted me-2"></i>
+											</li>
+											<li class="mb-3">
+												<i class="fas fa-check text-muted me-2"></i>
+											</li>
+										</ul>
+										<div
+											class="d-grid">{# 										<a class="btn btn-lg btn-secondary" href="#!">Purchase now</a>
+																																																																																																																																																						 #}
+										</div>
+									</div>
+								</div>
+							</div>
+						{% elseif not reservation.accepter and reservation.refuser and not reservation.livrer %}
+							<div class="col-md-4">
+								<div class="card mb-5 mb-md-0 h-100">
+									<div class="text-center mb-5">
+										<span class="badge bg-black fw-normal text-uppercase bg-danger">refuser</span>
+									</div>
+									<div class="card-body px-4 py-6 py-md-5 py-lg-6">
+										<div class="d-flex justify-content-start text-secondary">
+											<span class="h4 mb-0 mt-2 me-2">{{ reservation.livre }}</span>
+
+											<span class="display-3 fw-medium"></span>
+											<span class="display-4 fw-medium"></span>
+										</div>
+										<p class="text-muted mb-2 my-md-3"></p>
+										<hr class="border border-1"/>
+										<ul class="list-unstyled">
+											<li class="mb-3">
+												<i class="fas fa-check text-info me-2"></i>Reserver de
+												{{ reservation.reserverPour ? reservation.reserverPour|date('Y-m-d') : '' }}</li>
+											<li class="mb-3">
+												<i class="fas fa-check text-info me-2"></i>Reserver a
+												{{ reservation.reserverA ? reservation.reserverA|date('Y-m-d') : '' }}</li>
+											<li class="mb-3">
+												<i class="fas fa-check text-info me-2"></i>Rendu le
+												{{ reservation.renduLe ? reservation.renduLe|date('Y-m-d') : '' }}</li>
+											<li class="mb-3">
+												<i class="fas fa-check text-muted me-2"></i>
+											</li>
+											<li class="mb-3">
+												<i class="fas fa-check text-muted me-2"></i>
+											</li>
+										</ul>
+
+										<div class="d-grid"></div>
+									</div>
+								</div>
+							</div>
+
+						{% endif %}
+
+					{% else %}
+						<div class="col-md-4">
+							<div class="card mb-5 mb-md-0 h-100">
+								<div class="text-center mb-5">
+									<span class="badge bg-black fw-normal text-uppercase bg-danger">no records found</span>
+
+								</div>
+								<div class="card-body px-4 py-6 py-md-5 py-lg-6">
+									<div class="d-flex justify-content-start text-secondary">
+										<span class="h4 mb-0 mt-2 me-2"></span>
+										<span class="display-3 fw-medium">no records found</span>
+										<span class="display-4 fw-medium"></span>
+									</div>
+									<p class="text-muted mb-2 my-md-3"></p>
+									<hr class="border border-1"/>
+									<ul class="list-unstyled">
+										<li class="mb-3">
+											<i class="fas fa-check text-info me-2"></i>
+										</li>
+										<li class="mb-3">
+											<i class="fas fa-check text-info me-2"></i>
+										</li>
+										<li class="mb-3">
+											<i class="fas fa-check text-info me-2"></i>
+										</li>
+										<li class="mb-3">
+											<i class="fas fa-check text-info me-2"></i>
+										</li>
+										<li class="mb-3">
+											<i class="fas fa-check text-info me-2"></i>
+										</li>
+									</ul>
+									<div class="d-grid"></div>
+								</div>
+							</div>
+						</div>
+					{% endif %}
+
+				{% else %}
+					<div class="col-md-4">
+						<div class="card mb-5 mb-md-0 h-100">
+							<div class="text-center mb-5">
+								<span class="badge bg-black fw-normal text-uppercase bg-danger">no records found</span>
+
+							</div>
+							<div class="card-body px-4 py-6 py-md-5 py-lg-6">
+								<div class="d-flex justify-content-start text-secondary">
+									<span class="h4 mb-0 mt-2 me-2"></span>
+									<span class="display-3 fw-medium">no records found</span>
+									<span class="display-4 fw-medium"></span>
+								</div>
+								<p class="text-muted mb-2 my-md-3"></p>
+								<hr class="border border-1"/>
+								<ul class="list-unstyled">
+									<li class="mb-3">
+										<i class="fas fa-check text-info me-2"></i>
+									</li>
+									<li class="mb-3">
+										<i class="fas fa-check text-info me-2"></i>
+									</li>
+									<li class="mb-3">
+										<i class="fas fa-check text-info me-2"></i>
+									</li>
+									<li class="mb-3">
+										<i class="fas fa-check text-info me-2"></i>
+									</li>
+									<li class="mb-3">
+										<i class="fas fa-check text-info me-2"></i>
+									</li>
+								</ul>
+								<div class="d-grid"></div>
+							</div>
+						</div>
+					</div>
+
+				{% endfor %}
+
+
+			</div>
+		</div>
+		<!-- end of .container-->
+
+	</section>
+	<!-- <section> close ============================-->
+<!-- ============================================-->
+	{#
+																															<table class="table">
+																																<thead>
+																																	<tr>
+																																		<th>Id</th>
+																																		<th>ReserverPour</th>
+																																		<th>ReserverA</th>
+																																		<th>RenduLe</th>
+																																		<th>actions</th>
+																																	</tr>
+																																</thead>
+																																<tbody>
+																																	<tr>
+																																		<td>{{ reservation.id }}</td>
+																																		<td></td>
+																																		<td></td>
+																																		<td></td>
+																																		<td>
+																																			<a href="{{ path('reservation_show', {'id': reservation.id}) }}">show</a>
+																																			<a href="{{ path('reservation_edit', {'id': reservation.id}) }}">edit</a>
+																																		</td>
+																																	</tr>
+																																</tbody>
+																															</table>
+																														
+																															<a href="{{ path('reservation_new') }}">Create new</a> #}
 {% endblock %}

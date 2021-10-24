@@ -68,7 +68,7 @@
 		<section class="pb-0" style="margin-top:-17rem"> <div class="container">
 			<div class="row">
 				{% for livre in livres %}
-					{% include 'livre/_block_livre.html.twig' with {livre: livre} only %}
+					{% include 'imports/_block_livre.html.twig' with {livre: livre} only %}
 				{% else %}
 					<div class="col-md-4 mb-4">
 						<div class="card h-100">

@@ -49,6 +49,21 @@ class Reservation
      */
     private $renduLe;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $accepter;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $livrer;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $refuser;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -110,6 +125,42 @@ class Reservation
     public function setRenduLe(?\DateTimeInterface $renduLe): self
     {
         $this->renduLe = $renduLe;
+
+        return $this;
+    }
+
+    public function getAccepter(): ?bool
+    {
+        return $this->accepter;
+    }
+
+    public function setAccepter(?bool $accepter): self
+    {
+        $this->accepter = $accepter;
+
+        return $this;
+    }
+
+    public function getLivrer(): ?bool
+    {
+        return $this->livrer;
+    }
+
+    public function setLivrer(?bool $livrer): self
+    {
+        $this->livrer = $livrer;
+
+        return $this;
+    }
+
+    public function getRefuser(): ?bool
+    {
+        return $this->refuser;
+    }
+
+    public function setRefuser(?bool $refuser): self
+    {
+        $this->refuser = $refuser;
 
         return $this;
     }

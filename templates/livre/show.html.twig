@@ -34,9 +34,9 @@
 					<h1 class="my-4">Description</h1>
 					<p>{{ livre.description|raw }}</p>
 					{# 
-																																																					<p>The online Master of Computer and Information Technology degree (MCIT Online) is an online masters degree in Computer Science tailored for non-Computer Science majors. Offered by the University of Pennsylvania, this new program brings the long-running, established on-campus MCIT degree online. The MCIT Online program empowers students without computer science backgrounds to succeed in computing and technology fields. MCIT Online students come from diverse academic backgrounds ranging from business and history to chemistry and medicine.</p>
-																																																					<p>Computer science might not be in your past, but it will be in your future. Technology has an immense impact on our lives, and is creating fields and positions that didn’t exist five years ago. Equipped with a competitive computer science degree, MCIT Online graduates will be uniquely positioned to fill roles in finance, healthcare, education, and government, as well as in the core software development industry. Exposure to real-world projects throughout the program will prepare students to utilize skills that positively impact society.</p>
-																																																					 #}
+																																																										<p>The online Master of Computer and Information Technology degree (MCIT Online) is an online masters degree in Computer Science tailored for non-Computer Science majors. Offered by the University of Pennsylvania, this new program brings the long-running, established on-campus MCIT degree online. The MCIT Online program empowers students without computer science backgrounds to succeed in computing and technology fields. MCIT Online students come from diverse academic backgrounds ranging from business and history to chemistry and medicine.</p>
+																																																										<p>Computer science might not be in your past, but it will be in your future. Technology has an immense impact on our lives, and is creating fields and positions that didn’t exist five years ago. Equipped with a competitive computer science degree, MCIT Online graduates will be uniquely positioned to fill roles in finance, healthcare, education, and government, as well as in the core software development industry. Exposure to real-world projects throughout the program will prepare students to utilize skills that positively impact society.</p>
+																																																										 #}
 					<h1>What You’ll Learn?</h1>
 					<ul class="list-unstyled">
 						<li class="mb-3">
@@ -57,6 +57,11 @@
 				<div class="col-md-4">
 					<div class="card">
 						<ul class="list-group list-group-flush">
+							<li class="list-group-item">
+								<strong>
+									<a href="{{ path('reservation_reserver', {'id': livre.id}) }}">reserver</a>
+								</strong>
+							</li>
 							<li class="list-group-item">
 								<strong>Enrolled
 								</strong>: 1200 students</li>
@@ -90,34 +95,34 @@
 <!-- ============================================-->
 
 	{# <h1>Livre</h1>
-		
-			<table class="table">
-				<tbody>
-					<tr>
-						<th>Id</th>
-						<td>{{ livre.id }}</td>
-					</tr>
-					<tr>
-						<th>Titre</th>
-						<td>{{ livre.titre }}</td>
-					</tr>
-					<tr>
-						<th>Description</th>
-						<td>{{ livre.description }}</td>
-					</tr>
-					<tr>
-						<th>Image</th>
-						<td>{{ livre.image }}</td>
-					</tr>
-				</tbody>
-			</table>
-		
-			<a href="{{ path('livre_index') }}">back to list</a>
-		
-			<a href="{{ path('reservation_reserver', {'id': livre.id}) }}">reserver</a>
-			<a href="{{ path('livre_edit', {'id': livre.id}) }}">edit</a>
-		
-			{{ include('livre/_delete_form.html.twig') }} #}
+			
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>Id</th>
+							<td>{{ livre.id }}</td>
+						</tr>
+						<tr>
+							<th>Titre</th>
+							<td>{{ livre.titre }}</td>
+						</tr>
+						<tr>
+							<th>Description</th>
+							<td>{{ livre.description }}</td>
+						</tr>
+						<tr>
+							<th>Image</th>
+							<td>{{ livre.image }}</td>
+						</tr>
+					</tbody>
+				</table>
+			
+				<a href="{{ path('livre_index') }}">back to list</a>
+			
+				<a href="{{ path('reservation_reserver', {'id': livre.id}) }}">reserver</a>
+				<a href="{{ path('livre_edit', {'id': livre.id}) }}">edit</a>
+			
+				{{ include('livre/_delete_form.html.twig') }} #}
 {% endblock %}
 
 {% block stat %}{% endblock %}

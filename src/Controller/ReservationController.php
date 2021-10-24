@@ -20,10 +20,10 @@ class ReservationController extends AbstractController
     /**
      * @Route("/", name="reservation_index", methods={"GET"})
      */
-    public function index(ReservationRepository $reservationRepository): Response
+    public function index(ReservationRepository $reservationRepository,Security $security): Response
     {
         return $this->render('reservation/index.html.twig', [
-            'reservations' => $reservationRepository->findAll(),
+            'reservations' => $reservationRepository->findByEmprinteur($security->getUser()),
         ]);
     }
 

@@ -12,7 +12,7 @@
 					Top Featured Courses
 				</h1>
 				{% for livre in livres %}
-					{% include 'default/_block_livre.html.twig' with {livre: livre} only %}
+					{% include 'imports/_block_livre.html.twig' with {livre: livre} only %}
 				{% endfor %}
 			</div>
 		</div>
